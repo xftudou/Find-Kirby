@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'ArcadeClassic';
+    src: url('../../assets/ARCADECLASSIC.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .home {
     display: flex;
     flex-direction: column;
@@ -12,30 +19,31 @@
     margin-bottom: 20px;
 }
 
-.home-nav ul {
+.home-nav {
     display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.home-nav li {
-    margin-bottom: 10px;
+    padding: 1rem;
 }
 
 .home-nav button {
     background-color: #E791BF;
     color: white;
-    border: solid 2px white;
-    padding: 10px 15px;
+    padding: 15px 20px;
+    margin: 0 1rem;
+    font-size: 20px;
     border-radius: 5px;
+    box-shadow: 0 8px #999;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    outline: none;
 }
 
 .home-nav button:hover {
     background-color: #D74894;
-    border-color: white;
+    border: none;
+}
+
+.home-nav button:active {
+    background-color: #D74894;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }

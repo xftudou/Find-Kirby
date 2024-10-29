@@ -9,29 +9,31 @@ import './App.css';
 const App = () => {
   return (
     <Router>
-      <AppContent /> { }
+      <Header />
+      <ShowNavbar />
+      <div className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/game/:difficulty" element={<Game />} />
+          <Route path="/rules" element={<Rules />} />
+        </Routes>
+      </div>
     </Router>
   );
-};
+}
 
-const AppContent = () => {
+// Fixed Header on the top
+const Header = () => (
+  <header className="app-header">
+    <h1>Find Kirby!</h1>
+  </header>
+)
+
+// Show navbar if not on homepage
+function ShowNavbar() {
   const location = useLocation();
-
-  return (
-    <>
-      <header className="app-header">
-        <h1>Find Kirby!</h1>
-      </header>
-
-      {location.pathname !== "/" && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/game/:difficulty" element={<Game />} />
-        <Route path="/rules" element={<Rules />} />
-      </Routes>
-    </>
-  );
-};
-
+  const ShowNavbar = location.pathname !== "/";
+  return ShowNavbar ? <Navbar /> : null;
+}
 
 export default App;

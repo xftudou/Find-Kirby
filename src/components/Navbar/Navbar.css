@@ -1,18 +1,21 @@
-nav {
-    color: #fff;
-    padding: 10px 20px;
-}
-
-nav ul {
-    list-style: none;
+.navbar {
     display: flex;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 20px;
 }
 
-nav li {
-    margin: 0 15px;
-}
-
-nav a {
-    color: white;
+.navbar .nav-link {
+    color: #D74894;
+    margin: 0 1rem;
     text-decoration: none;
+}
+
+.navbar .nav-link:hover {
+    text-decoration: underline;
+}
+
+.navbar .nav-link.active {
+    font-weight: bold;
+    text-decoration: underline;
 }
