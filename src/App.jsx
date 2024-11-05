@@ -1,26 +1,35 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Game from './components/Game/Game';
 import Rules from './components/Rules/Rules';
+import { GameProvider } from './GameContext';
 import './App.css';
+
 
 const App = () => {
   return (
     <Router>
-      <Header />
-      <ShowNavbar />
-      <div className="app-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/game/:difficulty" element={<Game />} />
-          <Route path="/rules" element={<Rules />} />
-        </Routes>
-      </div>
+      <GameProvider>
+        <Header />
+        <ShowNavbar />
+        <div className="app-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/game/:difficulty" element={<GameRoute />} />
+            <Route path="/rules" element={<Rules />} />
+            <Route path="*" element={<Navigate to="/game/easy" replace />} />
+          </Routes>
+        </div>
+      </GameProvider>
     </Router>
   );
-}
+};
+
+const GameRoute = () => {
+  return <Game />;
+};
 
 // Fixed Header on the top
 const Header = () => (

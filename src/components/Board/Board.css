@@ -1,0 +1,8 @@
+.board {
+    display: grid;
+    gap: 2px;
+    background-color: #e791bf;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: center;
+}

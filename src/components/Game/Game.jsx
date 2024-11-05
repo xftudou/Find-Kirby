@@ -1,19 +1,49 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Game.css';
 import { useParams } from 'react-router-dom';
-
-const gameSettings = {
-    easy: { rows: 8, cols: 8, mines: 10 },
-    medium: { rows: 16, cols: 16, mines: 40 },
-    hard: { rows: 16, cols: 30, mines: 99 },
-};
+import Board from '../Board/Board';
+import GameContext from '../../GameContext';
 
 const Game = () => {
-    const { difficulty } = useParams();
+    const {
+        difficulty,
+        setDifficulty,
+        board,
+        gameStatus,
+        handleSquareClick,
+        handleSquareRightClick,
+    } = useContext(GameContext);
+
+    const { difficulty: routeDifficulty } = useParams();
+
+    useEffect(() => {
+        if (
+            routeDifficulty &&
+            ['easy', 'medium', 'hard'].includes(routeDifficulty) &&
+            routeDifficulty !== difficulty
+        ) {
+            setDifficulty(routeDifficulty);
+        }
+    }, [routeDifficulty]);
+
 
     return (
-        <div>
-            <h2>Game Difficulty: {difficulty}</h2>
+        <div className="game">
+            <Board
+                board={board}
+                onSquareClick={handleSquareClick}
+                onSquareRightClick={handleSquareRightClick}
+            />
+            {gameStatus === 'won' && (
+                <div className="message">
+                    Game Over! <br /> 🎉 You caught all the Kirbies.
+                </div>
+            )}
+            {gameStatus === 'lost' && (
+                <div className="message">
+                    Game Over! <br /> 💥 Kirbies escaped.
+                </div>
+            )}
         </div>
     );
 };

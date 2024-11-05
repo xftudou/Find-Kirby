@@ -1,16 +1,3 @@
-@font-face {
-    font-family: 'ArcadeClassic';
-    src: url('../../assets/ARCADECLASSIC.TTF') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-html,
-body,
-#root {
-    font-family: 'ArcadeClassic', sans-serif;
-}
-
 * {
     padding: 0;
     margin: 0;
