@@ -1,17 +1,17 @@
 .square {
-    background-color: #f7daea;
+    background-color: #efb6d4;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     user-select: none;
-    border: 1px solid #999;
+    border: 1px solid #df6da9;
     font-size: 1.2rem;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .square:hover {
-    background-color: #ddd;
+    background-color: #f7daea;
 }
 
 .square.selected {

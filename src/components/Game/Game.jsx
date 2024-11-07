@@ -36,12 +36,12 @@ const Game = () => {
             />
             {gameStatus === 'won' && (
                 <div className="message">
-                    Game Over! <br /> 🎉 You caught all the Kirbies.
+                    🎉 Game Over! <br /> You caught all the Kirbies.
                 </div>
             )}
             {gameStatus === 'lost' && (
                 <div className="message">
-                    Game Over! <br /> 💥 Kirbies escaped.
+                    💥 Game Over! <br /> Kirbies escaped.
                 </div>
             )}
         </div>
