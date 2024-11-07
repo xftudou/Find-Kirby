@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import './Game.css';
 import { useParams } from 'react-router-dom';
 import Board from '../Board/Board';
+import Status from '../Status/Status';
 import GameContext from '../../GameContext';
 
 const Game = () => {
@@ -12,6 +13,9 @@ const Game = () => {
         gameStatus,
         handleSquareClick,
         handleSquareRightClick,
+        totalMines,
+        flaggedCount,
+        resetGame,
     } = useContext(GameContext);
 
     const { difficulty: routeDifficulty } = useParams();
@@ -29,6 +33,11 @@ const Game = () => {
 
     return (
         <div className="game">
+            <Status
+                totalMines={totalMines}
+                flaggedCount={flaggedCount}
+                resetGame={resetGame}
+            />
             <Board
                 board={board}
                 onSquareClick={handleSquareClick}

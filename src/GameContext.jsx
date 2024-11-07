@@ -221,6 +221,10 @@ export const GameProvider = ({ children }) => {
         );
     };
 
+    const resetGame = () => {
+        initializeBoard();
+    };
+
     return (
         <GameContext.Provider
             value={{
@@ -230,6 +234,9 @@ export const GameProvider = ({ children }) => {
                 gameStatus,
                 handleSquareClick,
                 handleSquareRightClick,
+                flaggedCount,
+                totalMines,
+                resetGame,
             }}
         >
             {children}

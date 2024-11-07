@@ -1,0 +1,28 @@
+.status {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    gap: 40px;
+    align-items: center;
+}
+
+.reset-button {
+    font-family: inherit;
+    background-color: #E791BF;
+    color: white;
+    padding: 5px 15px;
+    font-size: 15px;
+    border: 1px solid #D74894;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.reset-button:hover {
+    background-color: #D74894;
+}
+
+.reset-button:active {
+    transform: translateY(2px);
+}
