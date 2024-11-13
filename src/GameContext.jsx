@@ -237,6 +237,7 @@ export const GameProvider = ({ children }) => {
                 flaggedCount,
                 totalMines,
                 resetGame,
+                gameSettings,
             }}
         >
             {children}
