@@ -7,8 +7,6 @@ export default defineConfig({
   plugins: [react()],
   publicDir: 'public',
   build: {
-    outDir: 'build',
-    rollupOptions: {
-    },
+    outDir: 'dist',
   }
 })
