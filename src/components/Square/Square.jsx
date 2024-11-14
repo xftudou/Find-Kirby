@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Square.css';
 import PropTypes from 'prop-types';
 import kirby_bomb from '../../assets/pixel_kirby.jpg';
 import dee_flag from '../../assets/pixel_dee.webp';
 
 const Square = ({ square, onClick, onRightClick }) => {
+    const [longPressTimer, setLongPressTimer] = useState(null);
+    const longPressThreshold = 500;
+
+    const handleTouchStart = (event) => {
+        event.preventDefault();
+        const timer = setTimeout(() => {
+            onRightClick();
+        }, longPressThreshold);
+        setLongPressTimer(timer);
+    };
+
+    const handleTouchEnd = (event) => {
+        event.preventDefault();
+        if (longPressTimer) {
+            clearTimeout(longPressTimer);
+            setLongPressTimer(null);
+        }
+        if (event.timeStamp - event.nativeEvent.startTime < longPressThreshold) {
+            onClick();
+        }
+    };
+
     let display = '';
     let className = 'square';
 
