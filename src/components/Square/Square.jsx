@@ -5,27 +5,23 @@ import kirby_bomb from '../../assets/pixel_kirby.jpg';
 import dee_flag from '../../assets/pixel_dee.webp';
 
 const Square = ({ square, onClick, onRightClick }) => {
-    const [longPressTimer, setLongPressTimer] = useState(null);
-    const longPressThreshold = 500;
-
     const handleTouchStart = (event) => {
         event.preventDefault();
-        const timer = setTimeout(() => {
+        this.touchStartTimeout = setTimeout(() => {
             onRightClick();
-        }, longPressThreshold);
-        setLongPressTimer(timer);
+        }, 500);
     };
 
     const handleTouchEnd = (event) => {
         event.preventDefault();
-        if (longPressTimer) {
-            clearTimeout(longPressTimer);
-            setLongPressTimer(null);
-        }
-        if (event.timeStamp - event.nativeEvent.startTime < longPressThreshold) {
-            onClick();
-        }
+        clearTimeout(this.touchStartTimeout);
     };
+
+    const handleTouchMove = (event) => {
+        event.preventDefault();
+        clearTimeout(this.touchStartTimeout);
+    };
+
 
     let display = '';
     let className = 'square';
@@ -46,6 +42,9 @@ const Square = ({ square, onClick, onRightClick }) => {
         <div
             className={className}
             onClick={onClick}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchMove={handleTouchMove}
             onContextMenu={(event) => {
                 event.preventDefault();
                 onRightClick();

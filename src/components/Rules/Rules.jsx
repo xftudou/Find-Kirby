@@ -28,7 +28,7 @@ const Rules = () => {
             </ul>
 
             <h3>🎯 How to Play</h3>
-            <p><strong>Left Clicks: Reveal a Square</strong><br />
+            <p><strong>Left Clicks (Press on Mobile): Reveal a Square</strong><br />
                 Left-click on any square to unveil what’s beneath.<br />
                 <em>First Click Bonus:</em> Your very first click is always safe—no Kirbies there! Use this to kickstart your adventure.</p>
             <ul>
@@ -46,7 +46,7 @@ const Rules = () => {
                 </li>
             </ul>
 
-            <p><strong>Right Clicks: Flag</strong><br />
+            <p><strong>Right Clicks (Long Press on Mobile): Flag</strong><br />
                 Right-click on square to use flags.<br /></p>
             <ul>
                 <li>
