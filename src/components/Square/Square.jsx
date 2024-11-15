@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import './Square.css';
 import PropTypes from 'prop-types';
 import kirby_bomb from '../../assets/pixel_kirby.jpg';
 import dee_flag from '../../assets/pixel_dee.webp';
 
 const Square = ({ square, onClick, onRightClick }) => {
+    const timerRef = useRef(null);
+    const touchStartTimeRef = useRef(0);
+    const longPressThreshold = 500; // milliseconds
+
     const handleTouchStart = (event) => {
-        event.preventDefault();
-        this.touchStartTimeout = setTimeout(() => {
+        touchStartTimeRef.current = Date.now();
+
+        timerRef.current = setTimeout(() => {
             onRightClick();
-        }, 500);
+            timerRef.current = null;
+        }, longPressThreshold);
     };
 
     const handleTouchEnd = (event) => {
-        event.preventDefault();
-        clearTimeout(this.touchStartTimeout);
-    };
+        const touchDuration = Date.now() - touchStartTimeRef.current;
 
-    const handleTouchMove = (event) => {
-        event.preventDefault();
-        clearTimeout(this.touchStartTimeout);
-    };
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+            timerRef.current = null;
 
+            if (touchDuration < longPressThreshold) {
+                onClick();
+            }
+        }
+    };
 
     let display = '';
     let className = 'square';
@@ -44,11 +52,11 @@ const Square = ({ square, onClick, onRightClick }) => {
             onClick={onClick}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            onTouchMove={handleTouchMove}
             onContextMenu={(event) => {
                 event.preventDefault();
                 onRightClick();
             }}
+            style={{ touchAction: 'manipulation' }}
         >
             {display}
         </div>
