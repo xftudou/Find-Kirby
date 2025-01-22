@@ -1,8 +1,5 @@
-# React + Vite
+# Find Kirby!(Minesweeper)
+[(https://find-kirby.onrender.com)](https://find-kirby.onrender.com)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to Find Kirby! The evil Kirbies have captured our hero Waddle Dee! Let’s dive into the rules and get you started on your quest to save Waddle Dee!
+This is simply a minesweeper game, but instead of mines, you are finding kirbies!
